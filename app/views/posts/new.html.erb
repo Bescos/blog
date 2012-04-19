@@ -1,0 +1,12 @@
+<h1>Form to create a new post</h1>
+<%= form_tag("/posts", :method => "post") do %>
+<%= label(:post,:title, "Title :") %>
+<%= text_field(:post, :title) %>
+<br/>
+<br/>
+<%= label(:post,:body, "Body :") %>
+<br/>
+<%= text_area(:post, :body) %>
+<br/>
+<%= submit_tag("Create") %>
+<% end %>
