@@ -1,0 +1,12 @@
+<h1>Edit the post</h1>
+<%= form_tag("/posts/#{@post.id}", :method => "put") do %>
+<%= label(:post,:title, "Title :") %>
+<%= text_field(:post, :title) %>
+<br/>
+<br/>
+<%= label(:post,:body, "Body :") %>
+<br/>
+<%= text_area(:post, :body) %>
+<br/>
+<%= submit_tag("Edit") %>
+<% end %>

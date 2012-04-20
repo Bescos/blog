@@ -17,5 +17,26 @@ describe PostsController do
 			new_post_path.should == '/posts/new'
 		end
 	end
+
+	describe "edit posts" do
+		it "routes /posts/:id/edit to #edit for :id" do
+			{ :get => "posts/1/edit" }.should route_to(
+				:controller => "posts",
+				:action => "edit",
+				:id => "1"
+			)
+		end
+	end
+	
+	describe "update posts" do
+		it "routes put /posts/:id to #update for :id" do
+			{ :put => "posts/1" }.should route_to(
+				:controller => "posts",
+				:action => "update",
+				:id => "1"
+			)
+		end
+	end
+
 end
 
