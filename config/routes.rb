@@ -2,7 +2,8 @@ Blog::Application.routes.draw do
 	resources :posts
 	
 	match '/posts/:id/comments' => 'comments#create', :via => :post, :as => :create_comment
- 
+
+  match '/posts/:id/comments/:id' => 'comments#destroy', :via => :delete, :as => :delete_comment
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

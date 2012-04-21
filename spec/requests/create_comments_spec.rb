@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "CreateComments" do
-  describe "GET /comments/new" do
+  describe "POST /posts/:id/comments" do
 		before(:each) do
 			@post = Post.create(:title => "Test1", :body => "Ceci est le test numero 1")
 		end

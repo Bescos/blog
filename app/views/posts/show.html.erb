@@ -24,6 +24,11 @@
 <% @post.comments.all.each do |comment| %>
 	<li><p><%= comment.name %></p>
 			<p><%= comment.body %></p>
+			<p><%= form_tag("/posts/#{@post.id}/comments/#{comment.id}", :method => "delete") do %> 
+			<input type="hidden" name="post_id" value=<%= "#{@post.id}" %> />
+			<%= submit_tag("Delete") %>
+			<% end %>
+			</p>
 	</li>
 <% end %>
 </ul>
