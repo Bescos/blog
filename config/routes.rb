@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
 
+  get "posts/show"
+
   get "posts/edit"
 
 	resources :posts

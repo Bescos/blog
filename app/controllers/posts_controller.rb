@@ -21,4 +21,14 @@ class PostsController < ApplicationController
 		@post.update_attributes(params[:post])
 		redirect_to(posts_path)
 	end
+
+	def show
+		@post = Post.find_by_id(params[:id])
+	end
+
+	def destroy
+		@post = Post.find_by_id(params[:id])
+		@post.destroy
+		redirect_to(posts_path)
+	end
 end

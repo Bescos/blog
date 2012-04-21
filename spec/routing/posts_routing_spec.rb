@@ -38,5 +38,24 @@ describe PostsController do
 		end
 	end
 
+	describe "show posts" do
+		it "routes get /posts/:id to #show for :id" do
+			{ :get => "posts/1" }.should route_to(
+				:controller => "posts",
+				:action => "show",
+				:id => "1"
+			)
+		end
+	end
+
+	describe "delete posts" do
+		it "routes delete /posts/:id to #destroy for :id" do
+			{ :delete => "posts/1" }.should route_to(
+				:controller => "posts",
+				:action => "destroy",
+				:id => "1"
+			)
+		end
+	end
 end
 
