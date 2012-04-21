@@ -1,0 +1,13 @@
+<h2>Add a comment</h2>
+
+<%= form_tag("/posts/#{@post.id}/comments", :method => "post") do %>
+<%= label(:comment,:name, "Name :") %>
+<%= text_field(:comment, :name) %>
+<br/>
+<br/>
+<%= label(:comment,:body, "Body :") %>
+<br/>
+<%= text_area(:comment, :body) %>
+<br/>
+<%= submit_tag("Add") %>
+<% end %>

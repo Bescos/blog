@@ -1,10 +1,8 @@
 Blog::Application.routes.draw do
-
-  get "posts/show"
-
-  get "posts/edit"
-
 	resources :posts
+	
+	match '/posts/:id/comments' => 'comments#create', :via => :post, :as => :create_comment
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

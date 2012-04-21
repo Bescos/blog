@@ -3,3 +3,30 @@
 <h2><%= @post.title %></h2>
 <br />
 <p><%= @post.body %></p>
+
+<h2>Add a comment</h2>
+
+<%= form_tag("/posts/#{@post.id}/comments", :method => "post") do %>
+<input type="hidden" name="post_id" value=<%= "#{@post.id}" %> />
+<%= label(:comment,:name, "Name :") %>
+<%= text_field(:comment, :name) %>
+<br/>
+<br/>
+<%= label(:comment,:body, "Body :") %>
+<br/>
+<%= text_area(:comment, :body) %>
+<br/>
+<%= submit_tag("Add") %>
+<% end %>
+
+<h2> Comments on the post </h2>
+<ul>
+<% @post.comments.all.each do |comment| %>
+	<li><p><%= comment.name %></p>
+			<p><%= comment.body %></p>
+	</li>
+<% end %>
+</ul>
+
+
+
