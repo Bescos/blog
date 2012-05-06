@@ -1,4 +1,4 @@
-<h1>Edit the post</h1>
+<h2>Edit the post</h2>
 <%= form_tag("/posts/#{@post.id}", :method => "put") do %>
 <%= label(:post,:title, "Title :") %>
 <%= text_field(:post, :title) %>

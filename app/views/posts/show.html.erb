@@ -1,7 +1,7 @@
-<h1>View of the post</h1>
+<h2>View of the post</h2>
 
-<h2><%= @post.title %></h2>
-<br />
+<h3><%= @post.title %></h3>
+
 <p><%= @post.body %></p>
 
 <h2>Add a comment</h2>
@@ -22,8 +22,7 @@
 <h2> Comments on the post </h2>
 <ul>
 <% @post.comments.all.each do |comment| %>
-	<li><p><%= comment.name %></p>
-			<p><%= comment.body %></p>
+	<li><p><%= comment.name %> : <%= comment.body %></p>
 			<p><%= form_tag("/posts/#{@post.id}/comments/#{comment.id}", :method => "delete") do %> 
 			<input type="hidden" name="post_id" value=<%= "#{@post.id}" %> />
 			<%= submit_tag("Delete") %>
@@ -32,6 +31,4 @@
 	</li>
 <% end %>
 </ul>
-
-
 

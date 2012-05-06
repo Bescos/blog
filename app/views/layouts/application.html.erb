@@ -6,7 +6,13 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
+<logo>
+<%= link_to image_tag("google_new.jpg"), posts_path, :title => "homepage" %>
+</logo>
+
 <body>
+<h1>The new sharing area of Google</h1>
 
 <%= yield %>
 
