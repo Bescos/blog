@@ -1,3 +1,46 @@
+=====================================================================================
+															BLOG README FILE
+=====================================================================================
+This Authentication service will provide you a easy-to-use service for all
+your applications and your clients.
+
+
+=====================================================================================
+														RUN THE APPLICATION
+=====================================================================================
+At the root of the project, launch the command:
+	$rails server
+
+The server will run and you can reach it with the url : http://localhost:3000
+
+
+=====================================================================================
+														TEST THE APPLICATION
+=====================================================================================
+When you reach the previous url, you will see the list of posts.
+
+On each post, you have 3 actions :
+	- Edit the post: This will drive you to another page that permit to edit 
+		the title and the body of the existing post.
+	- Show the post: This will show you the title and the body of the post and you could
+		see comments that users have written, you could delete it or add you own comment !
+	- Delete the post
+
+You can also create a post by clicking the link "Create a new post" at the bottom of the page.
+
+In every page, click the "New google" image at the top left of the page to come back to the 
+list of posts.
+
+============================================================================================
+
+With this platform, you can easily express yourself ! Please use it without moderation !!
+
+An application created by NEW GOOGLE.
+"Don't forget we are the NEW WORLD MASTER!"
+
+============================================================================================
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create

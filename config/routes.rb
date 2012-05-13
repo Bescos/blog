@@ -1,4 +1,6 @@
 Blog::Application.routes.draw do
+	root :to => 'posts#index'
+
 	resources :posts
 	
 	match '/posts/:id/comments' => 'comments#create', :via => :post, :as => :create_comment
