@@ -28,6 +28,7 @@ describe PostsController do
 		before(:each) do
 			@p = double(Post)
 			Post.stub(:new){@p}
+					
 			@p.stub(:save)
 			@params = {:post =>{:title=>"title",:body=>"content"}}
 		end

@@ -33,7 +33,7 @@ describe CommentsController do
 			@c.stub(:find){@c}
 			@c.stub(:destroy)
 
-			@params = {:comment =>{:name=>"Me",:body=>"Comment1"},:post_id=>@p}
+			@params = {:comment =>{:name=>"Me",:body=>"Comment1",:comment_date=>"2013-03-16 16:23:05 +0100"},:post_id=>@p}
 		end
 		it "should destroy the comment" do
 			@c.should_receive(:destroy)

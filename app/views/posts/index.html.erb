@@ -1,9 +1,12 @@
-<h2>List of Posts</h2>
-<ul>
-<% @posts.each do |post| %>
-<li><%= post.title %>  <%= link_to 'Edit',edit_post_path(post.id)%>  <%= link_to 'Show',post_path(post.id)%>  <%= link_to 'Delete', post_path(post.id), method: :delete %> </li>
-<% end %>
-</ul>
-
 <p><%= link_to 'Create a new post', new_post_path %> </p>
+
+
+<% @posts.each do |post| %>
+<article>
+<%= post.title %>  <%= link_to 'Edit',edit_post_path(post.id)%>  <%= link_to 'Show',post_path(post.id)%>  <%= link_to 'Delete', post_path(post.id), method: :delete %> 
+</article>
+<% end %>
+
+
+
 
