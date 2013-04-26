@@ -1,40 +1,44 @@
-<html>
+<div class="article">
+	<div class="title">
+		<%= @post.title %>
+	</div>
+	
+	<div class="Abody">
+		<%= @post.body %>
+	</div>
 
-<h2>View of the post</h2>
+	<p><%= @post.updated_at %></p>
 
-<h3><%= @post.title %></h3>
+	<h2> Commentaires de l'article </h2>
+	<ul>
+	<% @post.comments.all.each do |comment| %>
+		<li><span class="redacteur"><%= comment.name %> </span>: <%= comment.body %>
+				<p> <%= comment.created_at %> </p>
+				 <%= form_tag("/posts/#{@post.id}/comments/#{comment.id}", :method => "delete") do %> 
+						<input type="hidden" name="post_id" value=<%= "#{@post.id}" %> />
+						<%= submit_tag("Supprimer") %>
+						<% end %>			
+		</li>
+	<% end %>
+	</ul>
 
-<p><%= @post.body %></p>
+</div>
 
-<p><%= @post.updated_at %></p>
+<div class="article">
+	<h2>Ajouter un commentaire</h2>
 
-<h2>Add a comment</h2>
+	<%= form_tag("/posts/#{@post.id}/comments", :method => "post") do %>
+	<input type="hidden" name="post_id" value=<%= "#{@post.id}" %> />
+	<%= label(:comment,:name, "Nom :") %>
+	<%= text_field(:comment, :name) %>
+	<br/>
+	<br/>
+	<%= label(:comment,:body, "Texte :") %>
+	<%= text_area(:comment, :body, :cols => 120, :rows => 3) %>
+	<br/>
+	<br/>
+	<%= submit_tag("Ajouter commentaire") %>
+	<% end %>
 
-<%= form_tag("/posts/#{@post.id}/comments", :method => "post") do %>
-<input type="hidden" name="post_id" value=<%= "#{@post.id}" %> />
-<%= label(:comment,:name, "Name :") %>
-<%= text_field(:comment, :name) %>
-<br/>
-<br/>
-<%= label(:comment,:body, "Body :") %>
-<br/>
-<%= text_area(:comment, :body) %>
-<br/>
+</div>
 
-<%= submit_tag("Add") %>
-<% end %>
-
-<h2> Comments on the post </h2>
-<ul>
-<% @post.comments.all.each do |comment| %>
-	<li><p><%= comment.name %> : <%= comment.body %></p>
-			<p> <%= comment.created_at %> </p>
-			<p><%= form_tag("/posts/#{@post.id}/comments/#{comment.id}", :method => "delete") do %> 
-			<input type="hidden" name="post_id" value=<%= "#{@post.id}" %> />
-			<%= submit_tag("Delete") %>
-			<% end %>
-			</p>
-	</li>
-<% end %>
-</ul>
-</html>

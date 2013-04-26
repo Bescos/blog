@@ -1,12 +1,26 @@
-<p><%= link_to 'Create a new post', new_post_path %> </p>
-
-
 <% @posts.each do |post| %>
-<article>
-<%= post.title %>  <%= link_to 'Edit',edit_post_path(post.id)%>  <%= link_to 'Show',post_path(post.id)%>  <%= link_to 'Delete', post_path(post.id), method: :delete %> 
-</article>
+	<div class="article">
+		<div class="title">
+			<%= post.title %> 
+			<%= link_to '[Editer]',edit_post_path(post.id)%>  <%= link_to '[Voir]',post_path(post.id)%>  
+			<%= link_to '[Supprimer]', post_path(post.id), method: :delete %> 
+		</div>
+		<div class="Abody">
+		<%= post.body %>
+		</div>
+
+		
+		<div class="button_comment">Commentaires
+			<div class="commentaires">
+			<ul>
+				<% post.comments.all.each do |comment| %>
+					<li><span class="redacteur"><%= comment.name %></span> : <%= comment.body %>
+							<p> <%= comment.created_at %> </p>
+					</li>
+				<% end %>
+			</ul>
+			</div>
+		</div>
+	</div>
 <% end %>
-
-
-
 

@@ -7,17 +7,25 @@
   <title>Blog</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
 </head>
 
 <header>
 	<logo>
-		<%= link_to 'Acceuil',posts_path%>
+		<a href="/"><img src="/logo.jpg" alt="Logo"/></a>
 	</logo>
-	<br/><br/>
+	<h2>We Are Listening</h2>
+			<canvas id="canvas">
+				HTML Canvas not supported
+			</canvas>
+			<div id="header-border"></div>
+		
 </header>
+
 <nav>
 	<ul>
+	<li><%= link_to 'Create a new post', new_post_path %></li>
 	<li>Recherche</li>
 	<li>Liens plus vus</li>
 	<li>Liens plus commentés</li>
@@ -28,8 +36,11 @@
 <%= yield %>
 </section>
 
+<p><br/></p>
+
 <footer>
 Liens vers d'autres sites
 </footer>
 
+</body>
 </html>

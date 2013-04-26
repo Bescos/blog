@@ -1,12 +1,13 @@
-<h2>Form to create a new post</h2>
-<%= form_tag("/posts", :method => "post") do %>
-<%= label(:post,:title, "Title :") %>
-<%= text_field(:post, :title) %>
-<br/>
-<br/>
-<%= label(:post,:body, "Body :") %>
-<br/>
-<%= text_area(:post, :body) %>
-<br/>
-<%= submit_tag("Create") %>
-<% end %>
+<div class="article">
+	<h2>Ajouter un nouvel article</h2>
+	<%= form_tag("/posts", :method => "post") do %>
+	<%= label(:post,:title, "Titre :") %>
+	<%= text_field(:post, :title) %>
+	<br/>
+	<br/>
+	<%= label(:post,:body, "Corps :") %>
+	<%= text_area(:post, :body, :cols => 120, :rows => 20) %>
+	<br/>
+	<%= submit_tag("Create") %>
+	<% end %>
+</div>

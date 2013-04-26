@@ -1,12 +1,14 @@
-<h2>Edit the post</h2>
-<%= form_tag("/posts/#{@post.id}", :method => "put") do %>
-<%= label(:post,:title, "Title :") %>
-<%= text_field(:post, :title) %>
-<br/>
-<br/>
-<%= label(:post,:body, "Body :") %>
-<br/>
-<%= text_area(:post, :body) %>
-<br/>
-<%= submit_tag("Edit") %>
-<% end %>
+<div class="article">
+	<h2>Editer l'article</h2>
+	<%= form_tag("/posts/#{@post.id}", :method => "put") do %>
+	<%= label(:post,:title, "Titre :") %>
+	<%= text_field(:post, :title) %>
+	<br/>
+	<br/>
+	<%= label(:post,:body, "Corps :") %>
+	<%= text_area(:post, :body, :cols => 120, :rows => 20) %>
+	<br/>
+	<br/>
+	<%= submit_tag("Sauvegarder") %>
+	<% end %>
+</div>
