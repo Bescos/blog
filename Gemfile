@@ -7,6 +7,7 @@ gem 'ransack'
 gem 'jquery-rails'
 gem 'turnout'   # Block app for maintenance
 gem 'lorem'
+gem 'devise'
 
 group :test, :development do
     gem 'factory_girl_rails'
