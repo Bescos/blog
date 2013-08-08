@@ -1,40 +1,46 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  body       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  post_date  :datetime
+#
+
 class Post < ActiveRecord::Base
-	has_many :comments, :dependent => :delete_all
+    attr_accessible :title, :body, :post_date
 
+    has_many :comments, :dependent => :delete_all
 
-	def self.search(search)
-		if search
-		  find(:all, :conditions => ['title OR body LIKE ?', "%#{search}%"])
-		else
-		  find(:all)
-		end
-	end
+    validates :title, :presence => true
+    validates :body, :presence => true
 
+    #------------------------- Class methods ----------------------------------
 
-	def self.most_commented
-		posts = Post.all
-		max, max_index = 0;
-		@max_comm = Array.new
-		posts.each do |post|
-			if post.comments.count > max
-				max = post.comments.count	
-				max_index = posts.index(post)
-			end
-		end	
-		@max_comm.push(posts[max_index])
-		posts.delete_at(max_index)
-		
-		max, max_index = 0;
-		posts.each do |post|
-			if post.comments.count > max
-				max = post.comments.count	
-				max_index = posts.index(post)
-			end
-		end	
-		@max_comm.push(posts[max_index])
-		posts.delete_at(max_index)
+    # Search posts based with given text in title or body
+    # * *Params* :
+    #   - search : text for the research
+    # * *Returns* :
+    #   - Array of posts (may be empty)
+    def self.search(search)
+        if search
+            Post.where('title LIKE ? OR body LIKE ?', "%#{search}%", "%#{search}%")
+        else
+            Post.all
+        end
+    end
 
-		return @max_comm
-	end
+    # Return Posts with most comments
+    # * *Params* :
+    #   - limit : max number of posts
+    # * *Returns* :
+    #   - array of posts (max nb, may be less or empty)
+    def self.most_commented(limit)
+        ps = Post.includes(:comments).sort_by { |u| -u.comments.size }
+        return ps[0..limit-1]
+    end
 
 end

@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'ransack'
 gem 'jquery-rails'
 gem 'turnout'   # Block app for maintenance
+gem 'lorem'
 
 group :test, :development do
     gem 'factory_girl_rails'
