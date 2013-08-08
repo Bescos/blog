@@ -1,36 +1,39 @@
 source 'https://rubygems.org'
 
+gem 'rails', '3.2.13'
 gem 'therubyracer'
+gem 'sqlite3'
+gem 'ransack'
+gem 'jquery-rails'
+gem 'turnout'   # Block app for maintenance
 
-# :development pour profiter des tâches rake
 group :test, :development do
-	gem 'rspec-rails'
-	gem 'capybara'
-	gem 'guard-rspec'
+    gem 'factory_girl_rails'
+    gem 'reek'
+    gem 'brakeman'
+    gem 'rspec-rails'
+    gem 'capybara'
+    gem 'guard-rspec'
 end
 
-gem 'rails', '3.2.2'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
-gem 'ransack'
+group :development do
+    gem 'annotate'             # annotate rails model (bundle exec annotate)
+    gem 'rails_best_practices' # Test rails best practices
+    gem 'better_errors'     # Create better error page
+    gem "binding_of_caller" # Improvement of better-errors
+    gem 'railroady'             # Create SVG diagram of model and controllers (rake diagram:all )
+    gem 'request-log-analyzer'  # Analyze logs : request-log-analyzer file.log
+    gem 'hirb'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-
-
-  gem 'uglifier', '>= 1.0.3'
+    gem 'therubyrhino'
+    # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+    gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -40,9 +43,6 @@ gem 'jquery-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
