@@ -2,21 +2,27 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  body       :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  post_date  :datetime
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  body        :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  post_date   :datetime
+#  user_id     :integer
+#  category_id :integer
 #
 
 require 'spec_helper'
 
 describe Post do
     before(:each) do
+        @user = FactoryGirl.create(:user)
+        @category = FactoryGirl.create(:category)
         @attr = {
             :title => "New Blog Post",
-            :body => Lorem::Base.new(:paragraphs, 30).output
+            :body => Lorem::Base.new(:paragraphs, 30).output,
+            :user => @user,
+            :category => @category
         }
     end
 
@@ -33,6 +39,16 @@ describe Post do
     it "should not create a post without body" do
         p = Post.new(@attr.merge(:body => nil))
         p.should_not be_valid
+    end
+
+    it "should not create post without user" do
+        p = Post.new(@attr.merge(:user => nil))
+        p.should_not be_valid
+    end
+
+    it "should create post without category" do
+        p = Post.new(@attr.merge(:category => nil))
+        p.should be_valid
     end
 
     #--------------------------------- search ---------------------------------

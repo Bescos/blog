@@ -19,7 +19,14 @@ FactoryGirl.define do
     end
 
     #---------------------------------- Model ---------------------------------
+    factory :user do
+        email
+        password "foobarbar"
+        password_confirmation 'foobarbar'
+    end
+
     factory :post do
+        user
         title { FactoryGirl.generate :name }
         body  { FactoryGirl.generate :text }
     end
@@ -28,6 +35,14 @@ FactoryGirl.define do
         name { FactoryGirl.generate :name }
         body  { FactoryGirl.generate :text }
         post
+    end
+
+    factory :tag do
+        name
+    end
+
+    factory :category do
+        name
     end
 
 end

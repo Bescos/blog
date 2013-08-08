@@ -2,21 +2,27 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  body       :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  post_date  :datetime
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  body        :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  post_date   :datetime
+#  user_id     :integer
+#  category_id :integer
 #
 
 class Post < ActiveRecord::Base
-    attr_accessible :title, :body, :post_date
+    attr_accessible :title, :body, :post_date, :user, :user_id, :category_id, :category
 
     has_many :comments, :dependent => :delete_all
+    belongs_to :user
+    belongs_to :category
+    has_and_belongs_to_many :tags
 
     validates :title, :presence => true
     validates :body, :presence => true
+    validates :user_id, :presence => true
 
     #------------------------- Class methods ----------------------------------
 
