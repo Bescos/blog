@@ -3,6 +3,10 @@ Blog::Application.routes.draw do
 
 	resources :posts
 	
+	match '/search' => 'posts#search', :via => :get
+
+	match '/search' => 'posts#research', :via => :post
+
 	match '/posts/:id/comments' => 'comments#create', :via => :post, :as => :create_comment
 
   match '/posts/:id/comments/:id' => 'comments#destroy', :via => :delete, :as => :delete_comment

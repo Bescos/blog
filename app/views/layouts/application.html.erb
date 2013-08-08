@@ -16,6 +16,18 @@
 		<a href="/"><img src="/logo.jpg" alt="Logo"/></a>
 	</logo>
 	<h2>We Are Listening</h2>
+			<canvas id="bleu">
+				HTML Canvas not supported
+			</canvas>
+			<canvas id="rouge">
+				HTML Canvas not supported
+			</canvas>
+			<canvas id="blanc">
+				HTML Canvas not supported
+			</canvas>
+			<canvas id="noir">
+				HTML Canvas not supported
+			</canvas>
 			<canvas id="canvas">
 				HTML Canvas not supported
 			</canvas>
@@ -26,9 +38,33 @@
 <nav>
 	<ul>
 	<li><%= link_to 'Create a new post', new_post_path %></li>
-	<li>Recherche</li>
-	<li>Liens plus vus</li>
-	<li>Liens plus commentés</li>
+	<li><%= link_to 'Recherche', search_path %></li>
+	<li>Articles les plus commentés :</li>
+	<% @max_comm.each do |post| %>
+	<div class="nav_article">
+		<div class="title">
+			<%= post.title %> 
+			<%= link_to '[Editer]',edit_post_path(post.id)%>  <%= link_to '[Voir]',post_path(post.id)%>  
+			<%= link_to '[Supprimer]', post_path(post.id), method: :delete %> 
+		</div>
+		<div class="Abody">
+		<%= post.body %>
+		</div>
+					
+		<div class="button_comment"> <%= post.comments.count %> Commentaires
+			<div class="commentaires">
+			<ul>
+				<% post.comments.all.each do |comment| %>
+					<li><span class="redacteur"><%= comment.name %></span> : <%= comment.body %>
+							<p> <%= comment.created_at %> </p>
+					</li>
+				<% end %>
+			</ul>
+			</div>
+		</div>
+	</div>
+<% end %>
+	
 	</ul>
 </nav>
 

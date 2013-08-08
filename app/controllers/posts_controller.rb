@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
+
 	def index
 		@posts = Post.all
+		@max_comm = Post.most_commented
 	end
 
 	def new
+		@max_comm = Post.most_commented
 	end
 
 	def create
@@ -14,6 +17,7 @@ class PostsController < ApplicationController
 
 	def edit
 		@post = Post.find_by_id(params[:id])
+		@max_comm = Post.most_commented
 	end
 
 	def update
@@ -24,11 +28,21 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find_by_id(params[:id])
+		@max_comm = Post.most_commented
 	end
 
 	def destroy
 		@post = Post.find_by_id(params[:id])
 		@post.destroy
 		redirect_to(posts_path);
+	end
+
+	def search
+		@max_comm = Post.most_commented
+	end
+
+	def research
+		@posts = Post.search(params[:post][:search])
+		@max_comm = Post.most_commented
 	end
 end

@@ -1,0 +1,10 @@
+<div class="article">
+	<h2>Rechercher un article</h2>
+	<%= form_tag("/search", :method => "post") do %>
+	<%= text_field(:post, :search) %>
+	<br/>
+	<br/>
+	<%= submit_tag("Rechercher") %>
+	<% end %>
+
+</div>

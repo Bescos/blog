@@ -14,6 +14,46 @@ header {
 	height:5px;
 	background-color: #CFCDDF;
 }
+#bleu{
+	position: relative;
+	left:8%;
+	width: 2%;
+	height: 25%;
+	border: 2px solid #FEDFFF;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+#rouge{
+	position: relative;
+	left:8%;
+	width: 2%;
+	height: 25%;
+	border: 2px solid #FEDFFF;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+#blanc{
+	position: relative;
+	left:8%;
+	width: 2%;
+	height: 25%;
+	border: 2px solid #000000;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+#noir{
+	position: relative;
+	left:8%;
+	width: 2%;
+	height: 25%;
+	border: 2px solid #FEDFFF;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
 #canvas{
 	position: absolute;
 	top: 0%;
@@ -55,26 +95,23 @@ nav {
 	width: 28%;
 	margin-top: 0.9%;
 	float: left;
-	background-color: #8675FF;
-	border: 1px solid black;
+	background-color: #000000;
 }
 
 nav ul {  
-    margin-top: 0%; 
-    list-style: none;  
-	background-color: #555555;
+  margin-top: 0%; 
+  list-style: none;  
 	margin: 0;
 	padding: 0;
 }  
 	
 nav li {
 	position: relative;
-	background-color: #000000;
 	color: #FFFFFF
 }
 
 nav ul  li:hover {  
-    background-color: #FFFFFF;  
+   background-color: #FFFFFF;  
 	color: #000000;
 }  
   
@@ -161,6 +198,17 @@ label[for=comment_body] {
 	margin-right: 4px;
 }
 
+.nav_article {
+	margin-top: 2%;
+	margin-left: 0.5%;
+	margin-bottom: 1%;
+	border: 1px solid white;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 0.5%;
+	background-color: rgb(250,250,250);
+}
 footer { 
 	background-color: #76797c;
 	width: 100%;

@@ -57,5 +57,14 @@ describe PostsController do
 			)
 		end
 	end
+
+	describe "search posts" do
+		it "routes to #search" do
+			get('/search').should route_to("posts#search")
+		end
+		it "should provide the alias post_path for /posts" do
+			search_path.should == '/search'
+		end
+	end
 end
 
