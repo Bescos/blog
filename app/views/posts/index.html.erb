@@ -1,14 +1,17 @@
 <% @posts.each do |post| %>
 	<div class="article">
 		<div class="title">
-			<%= post.title %> 
-			<%= link_to '[Editer]',edit_post_path(post.id)%>  <%= link_to '[Voir]',post_path(post.id)%>  
-			<%= link_to '[Supprimer]', post_path(post.id), method: :delete %> 
+			<%= post.title %>
+                        <%= link_to '[Voir]',post_path(post.id)%>
+                        <%if user_signed_in? %>
+                            <%= link_to '[Editer]',edit_admin_post_path(post.id)%>
+                            <%= link_to '[Supprimer]', admin_post_path(post.id), method: :delete %>
+                        <% end %>
 		</div>
 		<div class="Abody">
 		<%= post.body %>
 		</div>
-					
+
 		<div class="button_comment"> <%= post.comments.count %> Commentaires
 			<div class="commentaires">
 			<ul>

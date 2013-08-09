@@ -1,0 +1,59 @@
+<html lang="en">
+    <head>
+        <title>Browser Fingerprint</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <%= stylesheet_link_tag "admin", :media => "screen" %>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/">Blog</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <%= current_user.email %>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3 sdbar">
+                    <div class="well sidebar-nav">
+                        <ul class="nav nav-list">
+                            <li class="nav-header">Articles</li>
+                            <li class="active"><%= link_to "Tous les articles", admin_posts_path %></li>
+                            <li><%=link_to "Nouvel article", new_admin_post_path%></li>
+                            <li><%= link_to "Catégories", admin_categories_path%></li>
+                            <li class="nav-header">Utilisateurs</li>
+                            <li><%= link_to "Tous les utilisateurs", admin_users_path%></li>
+                            <li><%= link_to "Créer un utilisateur", new_admin_user_path%></li>
+                        </ul>
+                    </div><!--/.well -->
+                </div><!--/span-->
+                <div class="span9">
+                    <%= yield %>
+                </div>
+
+            </div>
+        </div>
+        <%= javascript_include_tag "admin" %>
+    </body>
+</html>

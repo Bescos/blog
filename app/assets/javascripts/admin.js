@@ -12,5 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require animations
-//= require music.js
+//= require bootstrap.min.js
