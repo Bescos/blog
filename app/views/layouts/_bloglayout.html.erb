@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <title>Blog</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+
+  <%= csrf_meta_tags %>
+</head>
+
+<header>
+	<logo>
+		<a href="/"><img src="/logo.jpg" alt="Logo"/></a>
+	</logo>
+	<h2>We Are Listening</h2>
+			<canvas id="bleu">
+				HTML Canvas not supported
+			</canvas>
+			<canvas id="rouge">
+				HTML Canvas not supported
+			</canvas>
+			<canvas id="blanc">
+				HTML Canvas not supported
+			</canvas>
+			<canvas id="noir">
+				HTML Canvas not supported
+			</canvas>
+			<canvas id="canvas">
+				HTML Canvas not supported
+			</canvas>
+			<div id="header-border"></div>
+
+</header>
+
+<nav>
+	<ul>
+	<li><%= link_to 'Login', new_user_session_path %></li>
+	<li><%= link_to 'Recherche', search_path %></li>
+	<li>Articles les plus commentés :</li>
+	<% @max_comm.each do |post| %>
+	<div class="nav_article">
+		<div class="title">
+			<%= post.title %>
+                        <%= link_to '[Voir]',post_path(post.id)%>
+                        <%if user_signed_in? %>
+                            <%= link_to '[Editer]',edit_admin_post_path(post.id)%>
+                            <%= link_to '[Supprimer]', admin_post_path(post.id), method: :delete %>
+                        <% end %>
+		</div>
+		<div class="Abody">
+		<%= post.body %>
+		</div>
+
+		<div class="button_comment"> <%= post.comments.count %> Commentaires
+			<div class="commentaires">
+			<ul>
+				<% post.comments.all.each do |comment| %>
+					<li><span class="redacteur"><%= comment.name %></span> : <%= comment.body %>
+							<p> <%= comment.created_at %> </p>
+					</li>
+				<% end %>
+			</ul>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+	</ul>
+</nav>
+
+<section>
+    <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+</section>
+
+<p><br/></p>
+
+<footer>
+Liens vers d'autres sites
+</footer>
+
+</body>
+</html>
